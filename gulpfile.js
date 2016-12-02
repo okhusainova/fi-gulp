@@ -23,7 +23,7 @@ gulp.task('lint', function () {
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failOnError());
-    
+
 });
 
 gulp.task('copy-html', function () {
@@ -36,9 +36,9 @@ gulp.task('styles', function () {
     gulp.src('src/less/*.less')
         .pipe(less())
         .pipe(autoprefixer({
-            browsers: ['last 2 versions']}
-            ));
-    uglify()
+                browsers: ['last 2 versions']
+            }
+        ))
         .pipe(concat('all.css'))
         .pipe(gulp.dest('./dist/css'))
         .pipe(reload({stream: true}));
@@ -47,8 +47,7 @@ gulp.task('styles', function () {
 gulp.task('scripts', function () {
     gulp.src('src/js/**/*.js')
         .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(concat('all.js'));
-    uglify()
+        .pipe(concat('all.js'))
         .pipe(sourcemaps.write('./maps/map', {includeContent: false, sourceRoot: './src'}))
         .pipe(gulp.dest('./dist/js'))
         .pipe(reload({stream: true}));
@@ -62,8 +61,9 @@ gulp.task('php', function () {
 gulp.task('images', function () {
     gulp.src('src/img/*')
         .pipe(imagemin({
-            progressive: true,
-            use: [imageminPngquant()]}
+                progressive: true,
+                use: [imageminPngquant()]
+            }
         ))
         .pipe(gulp.dest('./dist/img'));
 });
