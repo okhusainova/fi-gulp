@@ -13,8 +13,7 @@ var gulp = require('gulp'),
 
 var config = {
     server: {
-        baseDir: ['./dist', './', 'dist/**/*.*'],
-        proxy: '0.0.0.0:8888'
+        baseDir: ['./dist', './', 'dist/**/*.*']
     }
 };
 
